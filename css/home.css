@@ -1,0 +1,132 @@
+html{
+    padding: 2%;
+    background-color: lightcyan;
+    font: 1em sans-serif;
+    font-weight: bold;
+    
+}
+body{
+    background-image: image("img/Image.jpeg");
+}
+link{
+    text-decoration: none;
+    text-transform: uppercase;
+}
+address{
+    background-color: mediumpurple;
+    width: 250px;
+}
+p{
+    background-color: pink;
+    width: 250px;
+    font: 1em sans-serif;
+    line-height: initial;
+    text-align: left;
+}
+p::first-letter{
+    color: black;
+}
+ol, ul{
+    font-weight: 150;
+    color:red; 
+}
+h1{
+    text-transform: uppercase;
+    letter-spacing: 1 px;
+    border-radius: 25px;
+    transition: ease-in-out;
+}
+h1:hover{
+    text-transform: lowercase;
+}
+div.introduction h1{
+    background-color: magenta;
+    position:fixed;
+    margin-top: 157px;
+    margin-left: 50px;
+    padding: 2%;
+}
+div.introduction p{
+    background-color: magenta;
+    position: fixed;
+    float: left;
+    width: 600px;
+    margin-top: 217px;
+    margin-left: 50px;
+    padding: 1%
+    
+    
+}
+div.introduction img{
+    margin-top: 0px;
+    margin-right: 400px;
+    margin-left: 670px;
+    margin-bottom: 1000px;
+    position: fixed;
+    float: right;
+    height: 500px;
+    width: 500px;
+    padding: 1%;
+}
+div.Portfolio{
+    background-color: lightgreen;
+    position: fixed;
+    margin-top: 300px;
+    margin-left: 50px;
+    padding: 1%;
+    border: 1px solid black;
+    z-index: 0;
+    border-right: 3px solid green;
+    border-bottom: 3px solid green;
+}
+div.navbar{
+    display: inline;
+    position: fixed;
+    padding: 1%;
+    margin-top: 5px;
+    margin-right: 30px;
+    margin-left: 600px;
+    border-radius: 25px;
+    border: 1px solid black;
+    background-color: khaki;
+}
+div.Assignment {
+    background-color: maroon;
+    position: absolute;
+    padding: 1%;
+    margin-top: 50px;
+    margin-right: 100px;
+    margin-left:1000px;
+    width: 300px;
+    border: 1px solid black;
+}
+div.Schedule{
+    background-color: lightpink;
+    position:absolute;
+    margin-top: 1400px;
+    margin-left: 50px;
+    height: 300px;
+    width: 900px;
+    padding: 1%;
+    border: 1px solid black;
+    z-index: 1;
+    border-right: 3px solid green;
+    border-bottom: 3px solid green;
+}
+Table, th, td{
+    border: 1px solid black;
+    width: 800px;
+    column-span: 5;
+    background-color: cyan;
+    padding: 0;
+    vertical-align: initial;
+    
+}
+footer{
+    background-color:green;
+    position: fixed;
+    margin-top: 275px;
+    margin-left: 755px;
+    padding: 1%;
+    z-index: 2;
+}
