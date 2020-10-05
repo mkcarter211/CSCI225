@@ -22,8 +22,9 @@ p{
     font: 1em sans-serif;
     line-height: initial;
     text-align: left;
+    
 }
-p::first-letter{
+p:first-letter{
     color: black;
 }
 ol, ul{
@@ -79,6 +80,9 @@ div.Portfolio{
     border-right: 3px solid green;
     border-bottom: 3px solid green;
 }
+div.Portfolio ol{
+    box-shadow: 2px 5px red;
+}
 div.navbar{
     display: inline;
     position: fixed;
@@ -113,7 +117,7 @@ div.Schedule{
     border-right: 3px solid green;
     border-bottom: 3px solid green;
 }
-Table, th, td{
+table, th, td{
     border: 1px solid black;
     width: 800px;
     column-span: 5;
@@ -122,6 +126,7 @@ Table, th, td{
     vertical-align: initial;
     
 }
+
 footer{
     background-color:green;
     position: fixed;
