@@ -1,25 +1,78 @@
 <!DOCTYPE html>
 <head>
-    <title>
-    </title>
+    <link rel="stylesheet" href=" css/bootstrap.css ">
+    <title>Use CSS3 grid or bootstrap</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style type="text/css" media="all">
+    @import url('css/main.css');
+
+
+    .wrap {
+      background-color: burlywood;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 20px;
+      grid-auto-rows: minmax(100px, auto);
+    }
+
+    nav {
+      grid-column: 1/3;
+      grid-row: 1/2;
+    }
+
+    sidebar {
+      grid-column: 1/ 2;
+      grid-row: 2/3;
+    }
+    main{
+      grid-column: 1/ 3;
+      grid-row: 1/3;
+    }
+    
+  </style>
 </head>
     <body>
-        <Iframe width="420" height="345" src="https://www.youtube.com/embed/fJ9rUzIMcZQ"></Iframe><br>
-        <form name="feedback">
+      
+      <div class="wrap">
+        
+        <nav class="p-1 navbar navbar-expand-lg fixed-top navbar-light bg-light">
+          <h1>Navigation Bar</h1>
+        </nav>
+    
+        
+        <sidebar>
+          <p>
+            <img src="https://www.youtube.com/embed/fJ9rUzIMcZQ" alt="bohemian rhapsody" class="rounded-circle">
+          </p>
+        </sidebar>
+        <title>
+        </title>
+        <Iframe width="420" height="345" src="https://www.youtube.com/embed/fJ9rUzIMcZQ" class="rounded-circle"></Iframe><br>
+        <div class="form-control-input">
+        <form name="feedback" class="form-group">
             <fieldset>
-            <input type="text" id="fname" name="fname" placeholder="Anonymous" required>
+            <li class="font-weight-normal">
+            <input class="form-control" type="text" id="fname" name="fname" placeholder="Anonymous" required>
             <label for="fname">First name</label><br>
-            <input type="text" id="lname" name="lname" placeholder="Anonymous" required>
+            <input class="form-control" type="text" id="lname" name="lname" placeholder="Anonymous" required>
             <label for="lname">Last name</label><br>
-            <input type="email" id="mail" name="mail" placeholder="name@domain.com">
+            <input class="form-control" type="email" id="mail" name="mail" placeholder="name@domain.com">
             <label for="mail">Enter your email </label><br>
+            <input class="form-text text-muted" type="password" id="word" name="password">
+            <label for="word">Enter your password</label>
             <p>Are you going to recommend this website?</p>
-            <input type="radio" id="yes" name="button" value="yes">
+            <input class="form-check form-check-input form-check-label" type="radio" id="yes" name="button" value="yes">
             <label for="yes"> Yes</input><br>
-            <input type="radio" id="no" name="button" value="no">
+            <input class="form-check form-check-input form-check-label" type="radio" id="no" name="button" value="no">
             <label for="no"> No</input><br><br>
             <label for="website">What is your favorite website:</label>
-            <select name="website" id="website">
+            <select class="form-control" name="website" id="website">
                 <option value="Google">Google</option>
                 <option value="Time">Time</option>
                 <option value="Twitter">Twitter</option>
@@ -27,20 +80,21 @@
             </select>
             <br><br>
             <p>How do you feel about this website?</p><br>
-            <input type="checkbox" id="response1" name="response1" value="yes">
+            <input class="form-check form-check-input form-check-label" type="checkbox" id="response1" name="response1" value="yes">
             <label for="response1">I like this website</label><br>
-            <input type="checkbox" id="response2" name="response2" value="no">
+            <input class="form-check form-check-input form-check-label" type="checkbox" id="response2" name="response2" value="no">
             <label for="response1">I dont like this website</label><br><br>
             <label for="rating">Please rate this website: </label><br>
-            <input type="range" id="rating" name="rating" min="1" max="10">
+            <input class="form-range" type="range" id="rating" name="rating" min="1" max="10">
             <br><br>
             <p>please select your files to be entered here</p>
             <label for="files">Select file:</label>
             <input type="file" id="files" name="files" ><br><br>
-            <textarea id="comment" name="comment" rows="4" cols="50">Enter comments here</textarea><br>
+            <textarea class="form-control" id="comment" name="comment" rows="4" cols="50">Enter comments here</textarea><br>
             <input type="submit" value="Submit">
             </fieldset>
         </form>
+        
     </body>
 
 </html>
