@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<body>
+    <input type="text" id="calc" name="calc">
+    <label for="calc">input value</label>
+    <select name="units" id="units">
+        <option value="inches">inches</option>
+        <option value="feet">feet</option>
+        <option value="meters">meters</option>
+    </select>
+
+    <input type="text" id="calc2" name="calc2" value="">
+    <label for="calc2"></label>
+    <select name="units2" id="units2" >
+        <option value="inches" >inches</option>
+        <option value="feet" >feet</option>
+        <option value="meters" >meters</option>
+    </select>
+    
+    <button id="button">Click me</button>
+    <script>
+        function convertor(){
+            var input = document.getElementById("calc").value;
+            input = parseFloat(input);
+            var units = document.getElementById("units").value;
+            var units2 = document.getElementById("units2").value;
+            if(units=="feet" && units2 == "meters")
+            input = input/3.2808;
+            
+            if(units=="feet" && units2 == "inches")
+            input = input*12;
+
+            if(units=="feet" && units2 == "feet")
+            input = input;
+            
+            if(units=="inches" && units2=="feet" )
+            input = input/12;
+            
+            if(units=="inches" && units2=="meters")
+            input = input*0.0254;
+
+            if(units=="inches" && units2 == "inches")
+            input = input;
+            
+            if(units=="meters" && units2 == "inches")
+            input = input*39.3701;
+            
+            if(units=="meters" && units2 == "feet")
+            input = input*3.28084;
+
+            if(units=="meters" && units2 == "meters")
+            input = input;
+        
+            document.getElementById('calc2').value=input;
+        
+        }
+        var but = document.getElementById('button');
+        but.addEventListener("click",convertor);
+        
+    </script>
+
+
+</body>
+
+</html>
