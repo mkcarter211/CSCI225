@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<body>
+<form name="loandata">
+    <table>
+      <tr><td colspan="3"><b>Enter Loan Information:</b></td></tr>
+      <tr>
+        <td>1)</td>
+        <td>Amount of the loan:</td>
+        <td><input type="text" name="principal" size="12" 
+                   onchange="calculate();"></td>
+      </tr>
+      <tr>
+        <td>2)</td>
+        <td>Annual percentage rate of interest:</td>
+        <td><input type="text" name="interest" size="12" 
+                   onchange="calculate();"></td>
+      </tr>
+      <tr>
+        <td>3)</td>
+        <td>Repayment period in years:</td>
+        <td><input type="text" name="years" size="12" 
+                   onchange="calculate();"></td>
+      </tr>
+      <tr>
+        <td>4)</td>
+        <td>start year: </td>
+        <td><label for="start">years:</label>
+            <select id="start" name="start" onchange="calculate();">
+                <option value="2000">2000</option>
+                <option value="2001">2001</option>
+                <option value="2002">2002</option>
+                <option value="2003">2003</option>
+                <option value="2004">2004</option>
+                <option value="2005">2005</option>
+            </select></td>
+      </tr>
+      <tr><td colspan="3">
+        <input type="button" value="Compute" onclick="calculate();">
+      </td></tr>
+      <tr><td colspan="3">
+        <b>Payment Information:</b>
+      </td></tr>
+      <tr>
+        <td>5)</td>
+        <td>Your monthly payment will be:</td>
+        <td><input type="text" name="payment" size="12"></td>
+      </tr>
+      <tr>
+        <td>6)</td>
+        <td>Your total payment will be:</td>
+        <td><input type="text" name="total" size="12"></td>
+      </tr>
+      <tr>
+        <td>7)</td>
+        <td>Your total interest payments will be:</td>
+        <td><input type="text" name="totalinterest" size="12"></td>
+      </tr>
+    </table>
+  </form>
+
+  <div id = "result">
+    <p id = "demo" >table goes here</p>
+  </div>
+
+  <script>
+  function calculate() {
+      var principal = document.loandata.principal.value;
+      var balance = principal;
+      var interest = document.loandata.interest.value / 100 / 12;
+      var payments = document.loandata.years.value * 12;
+      var x = Math.pow(1 + interest, payments);
+      var monthly = (principal*x*interest)/(x-1);  // monthly payment
+      if (!isNaN(monthly) && (monthly != Number.POSITIVE_INFINITY) && (monthly != Number.NEGATIVE_INFINITY)) {
+          document.loandata.payment.value = round(monthly);
+          document.loandata.total.value = round(monthly * payments);
+          document.loandata.totalinterest.value = round((monthly * payments) - principal);
+          var i;
+          var years = document.loandata.start.value;  // repayment period 
+          var results = "<table>"    //every month--
+          for(i = 0; i<=year; i++){    // year = 15, 30,  so i =0, 1, ...15..30
+            results += "<tr>";
+            var sum = 0;
+            for(j = 0; j<=12; j++){     // j is the month   monthlyinterest = balance * interest ,  monthlypricipal = monthly - monthlyinterest
+              monthlyinterest = balance * interest;
+              monthlyprincipal = monthly - monthlyinterest;
+              balance = balance - monthlyprincipal
+              sum = monthlyinterest + monthlyprincipal;
+              //results += "<td>" + "Year: " + start + "</td>" + "<td>" + "interest: " + interest +"</td>" + "<td>"+ "principal: " + principal + "</td>" + "<td>" + "balance" + balance + "</td>";
+          }
+          results += "<td>" + "Year: " + start + "</td>" + "<td>" + "interest: " + interest +"</td>" + "<td>"+ "principal: " + principal + "</td>" + "<td>" + "balance" + balance + "</td>";
+         results +="</tr> ";
+      }
+      results +="</table>";
+      document.getElementById("demo").innerHTML = results;
+      //document.getElementById("result").innerHTML = results;
+      //document.getElementById(demo).innerHTML = results;
+      //document.getElementById(result).innerHTML = results;
+
+      }
+      else {
+          document.loandata.payment.value = "";
+          document.loandata.total.value = "";
+          document.loandata.totalinterest.value = "";
+      }
+}
+  function round(x) {
+    return Math.round(x*100)/100;
+  }
+  </script>
+</body>
+</html>
