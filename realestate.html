@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <body>
+  <style>
+    body {
+      background-image: url('Estate.jpg');
+    }
+    </style>
+    
 <form name="loandata">
+  <div style="background-color:lightcyan;">
+
     <table>
       <tr><td colspan="3"><b>Enter Loan Information:</b></td></tr>
       <tr>
@@ -32,6 +40,12 @@
                 <option value="2003">2003</option>
                 <option value="2004">2004</option>
                 <option value="2005">2005</option>
+                <option value="2006">2006</option>
+                <option value="2007">2007</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+                <option value="2010">2010</option>
+                <option value="2011">2011</option>
             </select></td>
       </tr>
       <tr><td colspan="3">
@@ -64,38 +78,37 @@
 
   <script>
   function calculate() {
+     console.log("inside of calculate");
       var principal = document.loandata.principal.value;
       var balance = principal;
       var interest = document.loandata.interest.value / 100 / 12;
       var payments = document.loandata.years.value * 12;
       var x = Math.pow(1 + interest, payments);
-      var monthly = (principal*x*interest)/(x-1);  // monthly payment
+      var years = document.loandata.start.value;
+      var monthly = (principal*x*interest)/(x-1);  
       if (!isNaN(monthly) && (monthly != Number.POSITIVE_INFINITY) && (monthly != Number.NEGATIVE_INFINITY)) {
           document.loandata.payment.value = round(monthly);
           document.loandata.total.value = round(monthly * payments);
           document.loandata.totalinterest.value = round((monthly * payments) - principal);
           var i;
-          var years = document.loandata.start.value;  // repayment period 
-          var results = "<table>"    //every month--
-          for(i = 0; i<=year; i++){    // year = 15, 30,  so i =0, 1, ...15..30
+          var results = "<table>"; 
+          var year = 30;   
+          for(i = 2000; i<=years; i++){    
             results += "<tr>";
-            var sum = 0;
-            for(j = 0; j<=12; j++){     // j is the month   monthlyinterest = balance * interest ,  monthlypricipal = monthly - monthlyinterest
+            var sumI = 0;
+            var sumP = 0;
+            for(j = 1; j<=12; j++){     
               monthlyinterest = balance * interest;
               monthlyprincipal = monthly - monthlyinterest;
               balance = balance - monthlyprincipal
-              sum = monthlyinterest + monthlyprincipal;
-              //results += "<td>" + "Year: " + start + "</td>" + "<td>" + "interest: " + interest +"</td>" + "<td>"+ "principal: " + principal + "</td>" + "<td>" + "balance" + balance + "</td>";
+              sumP += monthlyprincipal;
+              sumI += monthlyinterest;
           }
-          results += "<td>" + "Year: " + start + "</td>" + "<td>" + "interest: " + interest +"</td>" + "<td>"+ "principal: " + principal + "</td>" + "<td>" + "balance" + balance + "</td>";
+          results += "<td>" + "Year: " + i + "</td>" + "<td>" + "interest: " + parseFloat(round(sumI)) +"</td>" + "<td>"+ "principal: " + parseFloat(round(sumP)) + "</td>" + "<td>" + "balance: " + parseFloat(round(balance)) + "</td>";
          results +="</tr> ";
       }
       results +="</table>";
       document.getElementById("demo").innerHTML = results;
-      //document.getElementById("result").innerHTML = results;
-      //document.getElementById(demo).innerHTML = results;
-      //document.getElementById(result).innerHTML = results;
-
       }
       else {
           document.loandata.payment.value = "";
